@@ -1,8 +1,6 @@
 <?php
 require './aws-autoloader.php';
 
-use Aws\Translate\TranslateClient;
-use Aws\Translate\Exception;
 
 
 if(getenv('SQS_AWS_ACCESS_KEY_ID') !== false)
@@ -28,29 +26,47 @@ if(getenv('SQS_AWS_SECRET_ACCESS_KEY') !== false)
 
 
 
+use Aws\Translate\TranslateClient;
+use Aws\Exception\AwsException;
+use Aws\Credentials\Credentials;
 
-/*
-  $client = new DynamoDbClient([
-    'profile' => 'project1',
-    'region'  => 'us-west-2',
-    'version' => 'latest'
+
+$credentials = new Credentials('$SQS_AWS_ACCESS_KEY_ID', '$SQS_AWS_SECRET_ACCESS_KEY');
+
+echo "'$SQS_AWS_ACCESS_KEY_ID', '$SQS_AWS_SECRET_ACCESS_KEY'<hr>";
+
+//Create a Translate Client
+$client = new Aws\Translate\TranslateClient([
+    'profile' => 'default',
+    'region' => 'us-east-1',
+    'version' => 'latest',
+    'credentials' => [
+        'key' => $SQS_AWS_ACCESS_KEY_ID,
+        'secret' => $SQS_AWS_SECRET_ACCESS_KEY,
+    ],
 ]);
 
- */
+$currentLanguage = 'es';
 
-$client = translateClient(array(
-    'credentials' => array(
-        'key'    => 'SQS_AWS_ACCESS_KEY_ID',
-        'secret' => 'SQS_AWS_SECRET_ACCESS_KEY',
-    )
-));
+// If the TargetLanguageCode is not "en", the SourceLanguageCode must be "en".
+$targetLanguage= 'en';
 
 
-$result = $client->getTerminology([
-    'Name' => '<string>', // REQUIRED
-    'TerminologyDataFormat' => 'CSV|TMX', // REQUIRED
-]);
+$textToTranslate = 'El AWS SDK for PHP versión 3 permite a los desarrolladores de PHP utilizar Amazon Web Services en su código PHP y crear aplicaciones y software robustos utilizando servicios como Amazon S3, Amazon DynamoDB, Amazon Glacier, etc. Puede empezar rápidamente instalando el SDK mediante Composer (solicitando elpaquete aws/aws-sdk-php) o descargando el archivo aws.zip o aws.phar independiente';
 
+echo "checkpoint 1<hr>";
 
+try {
+    $result = $client->translateText([
+        'SourceLanguageCode' => $currentLanguage,
+        'TargetLanguageCode' => $targetLanguage,
+        'Text' => $textToTranslate,
+    ]);
+    var_dump($result);
+}catch (AwsException $e) {
+    // output error message if fails
+    echo $e->getMessage();
+    echo "\n";
+}
 
 ?>
