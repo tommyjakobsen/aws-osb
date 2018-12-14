@@ -30,8 +30,7 @@ use Aws\Translate\TranslateClient;
 use Aws\Translate\Exception;
 
 $client = new Aws\Translate\TranslateClient([
-    'profile' => 'default',
-    'region' => 'us-east-1',
+      'region' => 'us-east-1',
     'version' => 'latest',
 
 ]);
