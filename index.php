@@ -43,13 +43,9 @@ $textToTranslate = '¡Ahora estoy tan enojado con esta mierda!
 ¡Mi red pierde conexión todo el tiempo!
 
 ¡Mis genes españoles están gritando de furia!
-<<<<<<< HEAD
-¡AYUDAME AHORA!';
-=======
 ¡AYUDAME AHORA';
 
 
->>>>>>> 6b856b38ab7729a292d41f8f81e5dad6eb127c88
 
 try {
     $result = $client->translateText([
@@ -66,14 +62,11 @@ try {
     exit(1);
 }
 
-<<<<<<< HEAD
-
-print_r($result);
-=======
 $result = $result->toArray();
 echo "$textToTranslate<hr>":
 echo $result["TranslatedText"]."<hr>";
 
->>>>>>> 6b856b38ab7729a292d41f8f81e5dad6eb127c88
+
+
 
 ?>
