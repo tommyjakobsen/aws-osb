@@ -39,7 +39,11 @@ $currentLanguage = 'es';
 
 $targetLanguage= 'en';
 
-$textToTranslate = 'El AWS SDK for PHP versión 3 permite a los desarrolladores de PHP utilizar Amazon Web Services en su código PHP y crear aplicaciones y software robustos utilizando servicios como Amazon S3, Amazon DynamoDB, Amazon Glacier, etc. Puede empezar rápidamente instalando el SDK mediante Composer (solicitando elpaquete aws/aws-sdk-php) o descargando el archivo aws.zip o aws.phar independiente';
+$textToTranslate = '¡Ahora estoy tan enojado con esta mierda!
+¡Mi red pierde conexión todo el tiempo!
+
+¡Mis genes españoles están gritando de furia!
+¡AYUDAME AHORA!';
 
 try {
     $result = $client->translateText([
@@ -47,9 +51,16 @@ try {
         'TargetLanguageCode' => $targetLanguage,
         'Text' => $textToTranslate,
     ]);
-    var_dump($result);
+//DEBUG
+// var_dump($result);
 }catch (AwsException $e) {
     // output error message if fails
-    echo $e->getMessage();
-    echo "\n";
+    echo preg_replace('/\n/', '<br>'. $e->getMessage());
+    echo "";
+    exit(1);
 }
+
+
+print_r($result);
+
+?>
