@@ -29,3 +29,28 @@ require './aws-autoloader.php';
 use Aws\Translate\TranslateClient;
 use Aws\Translate\Exception;
 
+$client = new Aws\Translate\TranslateClient([
+    'profile' => 'default',
+    'region' => 'us-east-1',
+    'version' => 'latest',
+
+]);
+
+$currentLanguage = 'es';
+
+$targetLanguage= 'en';
+
+$textToTranslate = 'El AWS SDK for PHP versión 3 permite a los desarrolladores de PHP utilizar Amazon Web Services en su código PHP y crear aplicaciones y software robustos utilizando servicios como Amazon S3, Amazon DynamoDB, Amazon Glacier, etc. Puede empezar rápidamente instalando el SDK mediante Composer (solicitando elpaquete aws/aws-sdk-php) o descargando el archivo aws.zip o aws.phar independiente';
+
+try {
+    $result = $client->translateText([
+        'SourceLanguageCode' => $currentLanguage,
+        'TargetLanguageCode' => $targetLanguage,
+        'Text' => $textToTranslate,
+    ]);
+    var_dump($result);
+}catch (AwsException $e) {
+    // output error message if fails
+    echo $e->getMessage();
+    echo "\n";
+}
