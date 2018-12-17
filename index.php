@@ -78,8 +78,8 @@ try {
 }
 
 $result = $result->toArray();
-echo "$textToTranslate<hr>":
-echo $result["TranslatedText"]."<hr>";
+
+echo $result["TranslatedText"];
 
 
 
