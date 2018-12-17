@@ -15,7 +15,7 @@
                       <option value="en">en</option>
                       <option value="ar">ar</option>
                       <option value="de">de</option>
-                      <option value="es">es</option>
+                      <option selected value="es">es</option>
                       <option value="fr">fr</option>
                       <option value="pt">pt</option>
                       <option value="zh">zh</option>
@@ -37,7 +37,10 @@
         </tr>
 
         <tr><td><b>Text to translate:</b></td><td><textarea rows="4" cols="50" name="textToTranslate">
-Enter text here...</textarea>
+        ¡Ahora estoy tan enojado con esta mierda!
+¡Mi red pierde conexión todo el tiempo!
+¡Mis genes españoles están gritando de furia!
+¡AYUDAME AHORA!</textarea>
 </td></tr>
 
 </table>
