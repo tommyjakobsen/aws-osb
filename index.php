@@ -1,6 +1,9 @@
 <?php
 
 
+
+
+
 if(getenv('SQS_AWS_ACCESS_KEY_ID') !== false)
     {
         $SQS_AWS_ACCESS_KEY_ID=getenv('SQS_AWS_ACCESS_KEY_ID');
@@ -35,16 +38,28 @@ $client = new Aws\Translate\TranslateClient([
 
 ]);
 
-$currentLanguage = 'es';
+if(isset($_POST["sourceLang"]) && isset($_POST["targLang"]) && isset($_POST["textToTranslate"]) ){
 
-$targetLanguage= 'en';
+    $currentLanguage = $_POST["sourceLang"];
 
-$textToTranslate = '¡Ahora estoy tan enojado con esta mierda!
+    $targetLanguage= $_POST["targLang"];
+
+    $textToTranslate = $_POST["textToTranslate"];
+
+
+
+}else{
+    
+    $currentLanguage = 'es';
+
+    $targetLanguage= 'en';
+
+    $textToTranslate = '¡Ahora estoy tan enojado con esta mierda!
 ¡Mi red pierde conexión todo el tiempo!
 
 ¡Mis genes españoles están gritando de furia!
 ¡AYUDAME AHORA';
-
+}
 
 
 try {
