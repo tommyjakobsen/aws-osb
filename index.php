@@ -8,8 +8,9 @@
     <br/>
     <table>
         <tr>
-            <th align="left">
-Source Language Code:
+            <td align="left">
+<b>Source Language Code:</b>
+                </td><td>
                 <select id="sourceLang">
                       <option value="en">en</option>
                       <option value="ar">ar</option>
@@ -19,9 +20,10 @@ Source Language Code:
                       <option value="pt">pt</option>
                       <option value="zh">zh</option>
                 </select>
-            </th>
-            <th align="left">
-Target Language Code:
+            </td></tr>
+            <td align="left">
+<b>Target Language Code:</b>
+            </td><td>
                 <select id="targLang">
                       <option value="en">en</option>
                       <option value="ar">ar</option>
@@ -31,15 +33,15 @@ Target Language Code:
                       <option value="pt">pt</option>
                       <option value="zh">zh</option>
                 </select>
-            </th>
+            </td>
         </tr>
 
-        <tr><td>Text to translate:</td><td><textarea rows="4" cols="50" name="textToTranslate" form="usrform">
+        <tr><td><b>Text to translate:</b></td><td><textarea rows="4" cols="50" name="textToTranslate" form="usrform">
 Enter text here...</textarea>
-  <input type="submit" name="translate"></td></tr> 
-
+</td></tr>
         
 </table>
+<br>
 <input type="submit" name="translate">
 <br>
 
