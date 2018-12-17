@@ -2,7 +2,7 @@
 <html>
 <body>
 
-<form action="/translate.php" id="translate">
+<form action="/translate.php" id="translate"  method="post">
 
     <h1 style="text-align: left">Amazon Translate Demo</h1>
     <br/>
